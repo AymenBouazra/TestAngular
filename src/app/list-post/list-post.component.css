@@ -1,0 +1,14 @@
+.date{
+    color:red
+}
+
+.list{
+    width: 80%;
+    margin: auto;
+    
+}
+.border{
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}

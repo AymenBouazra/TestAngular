@@ -1,0 +1,39 @@
+<div class="row my-3">
+    <div class="offset-3 col-6 my-3">
+        <h1>UPDATE POST</h1>
+        <form [formGroup]="updatePost" (ngSubmit)="updatePostFn()">
+            <div class="form-group">
+                <label for="Name" class="form-label"> Titre : </label>
+                <input type="text" class="form-control" placeholder="Titre" formControlName="titre">
+                <div class="invalid-feedback d-block" *ngIf="submitted && updatePost.controls.titre.hasError('required')">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="form-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Description"
+                    formControlName="description"></textarea>
+                <div class="invalid-feedback d-block"
+                    *ngIf="submitted && updatePost.controls.description.hasError('required')">
+                    Description is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Catégorie</mat-label>
+                    <mat-select formControlName="category">
+                        <mat-option *ngFor="let cat of categories" [value]="cat.value">
+                            {{cat.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-error *ngIf="submitted && updatePost.controls.category.hasError('required')">
+                    Categorie is required
+                </mat-error>
+            </div>
+            <button type="submit" class="btn btn-success btn-block"><i class="fas fa-edit"></i> Update Post</button>
+            <button type="button" routerLink="/list-post" class="btn btn-primary btn-block"><i
+                    class="fas fa-arrow-left"></i> Cancel</button>
+        </form>
+    </div>
+</div>

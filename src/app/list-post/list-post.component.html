@@ -1,0 +1,21 @@
+<div class="offset-1 my-3 row">
+    <div class="col-12">
+        <button class="btn btn-success col-2 float-right" routerLink="/add-post"><i class="fas fa-plus"></i> Add Post
+        </button>
+    </div>
+</div>
+<div *ngIf="listPost" class="list">
+    <h1 style="color:purple">List of Posts</h1>
+    <div *ngFor="let post of listPost; let i=index" class="border">
+        <h2>Title :</h2> <p> {{post.titre}}</p>
+        <h2>Description: </h2> <p> {{post.description}}</p>
+        <h2>Category :</h2><p> {{post.category}}</p>
+        <h2>Date de création :</h2><p class="date"> {{post.date}}</p>
+        <p class="float-right"><button type="button" class="btn btn-warning " routerLink="/update-post/{{i}}">
+            <i class="far fa-edit"></i> Update
+        </button>
+        <button type="button" class="btn btn-danger" style="color:black!important" (click)="delete(i)">
+            <i class="fa fa-trash"></i> Delete</button></p><br><br>
+        
+    </div>
+</div>
